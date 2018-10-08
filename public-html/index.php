@@ -1,158 +1,22 @@
-<?php
-$website = 'http://www.zavrel.net';
-$cities = array('New York', 'Prague', 'Paris');
-$countries = ['Finland', 'France', 'Spain'];
-?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>TALKER</title>
 
-<!DOCTYPE html>  
-<head>  
- <title>Hello World!</title>
-</head>
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>TALKER</h1>
 
-<body>  
- <h1>Hello World!</h1>
- 
- <a href="<?php echo $website; ?>"><?php echo "ZAVREL CONSULTING: $website"; ?></a>
- <?php
- $trueValue = true;
- $falseValue = false;
- ?>
- <p><?php echo "This is the content of trueValue: $trueValue"; ?></p>
- <p><?php echo "This is the content of falseValue: $falseValue"; ?></p>
 
- <p>
-     <?php
-     $countries = array('Finland', 'France', 'Spain');
-     print_r($countries);
-     $countries[] = 'Italy';
-     print_r($countries);
-     ?>
- </p>
-
- <p>
-     <?php
-     echo $countries[1];
-     ?>
- </p>
-
- <p>
-     <?php
-     echo count($countries);
-     ?>
- </p>
-
- <p>
-     <?php
-     $age = array(
-         'John' => 35,
-         'Paul' => 24,
-         'George' => 27
-     );
-     print_r($age);
-     ?>
- </p>
-
- <p>
-     <?php
-     echo $age['Paul'];
-     ?>
- </p>
-
-<script>
-    var cars = ["Mercedes", "Volvo", "BMW", "Tesla"];
-    for (i in cars) {
-        console.log("The current car is " + cars[i]);
-    }
-</script>
-
-<?php
-    $cars = ["Mercedes", "Volvo", "BMW", "Tesla"];
-    foreach ($cars as $i) {
-        echo "The current car is $i<br>";
-    }
-?>
-
-<p>
-    <?php
-        class carBluePrint {
-            // Here goes properties and methods
-            
-            // constructor
-            public function __construct($newColor, $newMake) {
-                $this->color = $newColor;
-                $this->make = $newMake;
-            }
-
-            // setter method
-            public function setColor($newColor) {
-                $this->color = $newColor;
-            }
-
-            // getter method
-            public function getColor() {
-                return "<br>New color is: " . $this->color . "<br>";
-            }
-        }
-
-        $firstRealCar = new carBluePrint('green', 'Volvo');
-
-        var_dump($firstRealCar);
-        echo $firstRealCar->color;
-
-        
-        echo $firstRealCar->getColor();
-
-        $secondRealCar = new carBluePrint('brown', 'Mercedes');
-
-        
-        echo $secondRealCar->getColor();
-        var_dump($secondRealCar);
-    ?>
-</p>
-
-<p>
-    <?php
-    
-        class sportCarBluePrint extends carBluePrint {
-        
-            // constructor
-            public function __construct($newColor, $newMake, $newSpoiler) {
-                parent::__construct($newColor, $newMake);
-                $this->spoiler = $newSpoiler;
-            }
-        
-            public function activateSpoiler() {
-                return "<br><strong>SPOILER ACTIVE!</strong><br>";
-            }
-            
-        }
-
-        $firstSportCar = new sportCarBluePrint('magenta', 'Porsche', 'tail');
-        $firstSportCar->setColor("PINK");
-        var_dump($firstSportCar);
-        $firstSportCar->activateSpoiler();
-    
-    ?>
-</p>
-
-<p>
-    <?php
-        
-        function divideOneByNumber($number) {
-            if ($number == 0) {
-                throw new Exception("Division by zero is not allowed.");
-            }
-            return 1/$number;
-        }
-        
-        try {
-            echo "The result of division is: " . divideOneByNumber(0);
-        }
-        
-        catch(Exception $e) {
-            echo 'Message: ' . $e->getMessage();
-        }
-    ?>
-</p>
-
-</body>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>
