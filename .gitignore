@@ -3,3 +3,4 @@ public-html/db-pswd.inc.php
 scotchbox
 docker-compose.yml
 public-html/phpmyadmin
+public-html/PHPMailer

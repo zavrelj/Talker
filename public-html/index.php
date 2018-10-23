@@ -1,5 +1,8 @@
 <?php session_start(); require('system.ctrl.php');?>
 
+<?php phpSendEmail('info@bohemiapps.com', 'Hello there!', 'This is just the test email.'); ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
