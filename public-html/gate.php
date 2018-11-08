@@ -18,7 +18,16 @@
         }else{
             header('Location: index.php');
         }
-    }
+	}
+	
+	//fetching the row by uid, fetch returns the first (and only) result entry
+	$db_data = array($_SESSION["uid"]);
+	$dbUserRow = phpFetchDB('SELECT * FROM users WHERE user_id = ?', $db_data);
+	$db_data = "";
+
+	if ($dbUserRow["user_verified"] != 1 && $_SESSION["resend"] != 1) {
+		$_SESSION["msgid"] = "809";
+	}
 
  ?>
 
@@ -78,7 +87,7 @@
 	</div>
 
 
-	<?php $_SESSION["msgid"]=""; ?>
+	<?php $_SESSION["msgid"]=""; $_SESSION["resend"] = 0; ?>
 
 
 	<!-- Optional Javascript -->
