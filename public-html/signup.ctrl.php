@@ -26,8 +26,8 @@
 
         //if no result is returned, insert new record to the table, otherwise display feedback
         if (!is_array($isAlreadySignedUp)) {
-            $db_data = array($user_email, $hashed_user_password, 0);
-            phpModifyDB('INSERT INTO users (user_email, user_password, user_verified) values (?, ?, ?)', $db_data);
+            $db_data = array($user_email, $hashed_user_password, 0, "", "", "");
+            phpModifyDB('INSERT INTO users (user_email, user_password, user_verified, user_firstname, user_lastname, user_nickname) values (?, ?, ?, ?, ?, ?)', $db_data);
             $db_data = "";
             phpSendVerificationEmail($user_email, $hashed_user_password);
         }else{
