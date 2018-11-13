@@ -98,7 +98,7 @@ function phpShowInputFeedback($feedback_id) {
 		break;
 
 		default:
-		$feedback_type="is-invalid";
+		$feedback_type="";
 		$feedback_text="Unspecified error or warning";
 		break;
     }
