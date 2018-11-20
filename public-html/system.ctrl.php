@@ -150,6 +150,17 @@ function phpFetchDB($db_query, $db_data) {
     return $statement->fetch(PDO::FETCH_ASSOC);
 }
 
+// Get the information from the database
+function phpFetchAllDB($db_query, $db_data) {
+    global $connection;
+
+    $statement = $connection->prepare($db_query);
+    $statement->execute($db_data);
+
+    //setting the fetch mode and returning the result
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function phpSendEmail($to, $subject, $content) {
 
     //Create a new PHPMailer instance
