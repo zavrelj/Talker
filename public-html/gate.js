@@ -21,6 +21,10 @@
       case "formMessagingContent":
       var feedbackMessage = "Message can not be empty and can not contain '<' and '>' characters."
       break;
+
+      case "formGroupName":
+      var feedbackMessage = "Group name can not be empty and can not contain '<' and '>' characters."
+      break;
     }
   
     return feedbackMessage;
