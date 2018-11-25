@@ -16,7 +16,8 @@
 		$db_data = "";
 
 		//system feedback - your group has been created
-		$_SESSION["msgid"] = "411";
+        $_SESSION["msgid"] = "411";
+        header('Location: gate.php?module=groups');
 
 	}else{
 		//input feedback - for Javascript turned off
@@ -25,8 +26,8 @@
 			$_SESSION["msgid"] = "401";
 			//return the group_name back to the form
 			$_SESSION["group_name"] = $group_name;
-		}
+        }
+        header('Location: gate.php?module=group');
 	}
 
-	header('Location: gate.php?module=group');
 ?>
