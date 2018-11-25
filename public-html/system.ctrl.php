@@ -34,6 +34,11 @@ function phpShowSystemFeedback($feedback_id) {
 		$feedback_type="success";
 		$feedback_text="Group has been created successfully!";
         break;
+
+        case "511":
+		$feedback_type="success";
+		$feedback_text="Post has been successfully sent!";
+        break;
         
         case "804":
 		$feedback_type="danger";
@@ -127,6 +132,11 @@ function phpShowInputFeedback($feedback_id) {
         $feedback_text="Group name can not be empty and can not contain '<' and '>' characters.";
         break;
 
+        case "501":
+        $feedback_type="is-invalid";
+        $feedback_text="Post can not be empty and can not contain '<' and '>' characters.";
+        break;
+
         case "801":
 		$feedback_type="is-invalid";
 		$feedback_text="This is not a valid email address";
@@ -192,6 +202,14 @@ function phpGetUserEmail($user_id) {
 	$db_result = phpFetchDB('SELECT user_email FROM users WHERE user_id = ?', $db_data);
 	return $db_result['user_email'];
 }
+
+// Return group's name based on its id
+function phpGetGroupName($group_id) {
+	$db_data = array($group_id);
+	$db_result = phpFetchDB('SELECT group_name FROM groups WHERE group_id = ?', $db_data);
+	return $db_result['group_name'];
+}
+
 
 function phpSendEmail($to, $subject, $content) {
 
