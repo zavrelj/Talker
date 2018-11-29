@@ -42,3 +42,7 @@ function jsPostsValidateTextArea(elementId) {
 		element.classList.add("is-valid");
   }
 }
+
+function showTextAreaByPostId(elementId) {
+	document.getElementById("formPostsContentEdited" + elementId).hidden = false;
+}
