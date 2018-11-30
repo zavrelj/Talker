@@ -44,5 +44,25 @@ function jsPostsValidateTextArea(elementId) {
 }
 
 function showTextAreaByPostId(elementId) {
-	document.getElementById("formPostsContentEdited" + elementId).hidden = false;
+    
+    //store the original content before editing so you can restore it upon clicking Cancel button
+    var originalContent = document.getElementById("databasePostsContent" + elementId).innerText;
+    
+    if (document.getElementById("formPostsContentEdited" + elementId).hidden == true) {
+
+        //reset the content of the textarea to the original content from the database
+        document.getElementById("formPostsContentEdited" + elementId).value = originalContent;
+
+        document.getElementById("formPostsContentEdited" + elementId).hidden = false;
+        document.getElementById("formPostsEditButton" + elementId).text = "Cancel";
+        document.getElementById("formPostsEditButton" + elementId).classList.remove("btn-primary");
+        document.getElementById("formPostsEditButton" + elementId).classList.add("btn-danger");
+
+    } else {
+        document.getElementById("formPostsContentEdited" + elementId).hidden = true;
+        document.getElementById("formPostsEditButton" + elementId).text = "Edit";
+        document.getElementById("formPostsEditButton" + elementId).classList.remove("btn-danger");
+        document.getElementById("formPostsEditButton" + elementId).classList.add("btn-primary");
+
+    }
 }
