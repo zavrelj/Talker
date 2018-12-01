@@ -59,19 +59,16 @@ $db_data = "";
 
     <form action="posts.edit.ctrl.php" method="post" novalidate>
 
-        <div class="form-group">
-            <textarea class="form-control <?php if ($_SESSION['msgid']!='501' && $_SESSION['msgid']!='') { echo 'is-valid'; }else{ echo (phpShowInputFeedback($_SESSION['msgid'])[0]); } ?>" id="formPostsContentEdited<?php echo $dbPostRow['post_id']; ?>" name="formPostsContentEdited<?php echo $dbPostRow['post_id']; ?>" onkeyup="jsPostsValidateTextArea('formPostsContentEdited<?php echo $dbPostRow['post_id']; ?>')" hidden><?php echo $dbPostRow["post_content"]; ?></textarea>
-
-            <?php if ($_SESSION["msgid"]=="501") { ?>
-        <div class="invalid-feedback">
-                <?php echo (phpShowInputFeedback($_SESSION["msgid"])[1]); ?>
-        </div>
-        <?php } ?>
+        <div class="form-group form_posts_content">
+            <textarea class="form-control" id="formPostsContentEdited<?php echo $dbPostRow['post_id']; ?>" name="formPostsContentEdited<?php echo $dbPostRow['post_id']; ?>" onkeyup="jsPostsValidateTextArea('<?php echo $dbPostRow['post_id']; ?>')" hidden><?php echo $dbPostRow["post_content"]; ?></textarea>
         </div>
 
         <input type="hidden" id="formPostsGroupID" name="formPostsGroupID" value="<?php echo $_GET['gid']; ?>">
         <input type="hidden" id="formPostsPostID" name="formPostsPostID" value="<?php echo $dbPostRow["post_id"]; ?>">
-        <a href="#formPostsContentEdited<?php echo $dbPostRow['post_id']; ?>" id="formPostsEditButton<?php echo $dbPostRow['post_id']; ?>" class="btn btn-primary btn-sm" role="button" onclick="showTextAreaByPostId('<?php echo $dbPostRow["post_id"]; ?>')">Edit</a>
+
+        <?php if ($dbPostRow["post_author_id"] == $_SESSION["uid"]) { ?>
+            <a href="#formPostsContentEdited<?php echo $dbPostRow['post_id']; ?>" id="formPostsEditButton<?php echo $dbPostRow['post_id']; ?>" class="btn btn-primary btn-sm" role="button" onclick="showTextAreaByPostId('<?php echo $dbPostRow["post_id"]; ?>')">Edit</a>
+        <?php } ?>
 
     </form>
 

@@ -6,7 +6,17 @@ jsPostsSubmit.disabled = true;
 jsPostsSubmit.classList.remove("btn-success");
 jsPostsSubmit.classList.add("btn-danger");
 
-function jsPostsSubmitEnable() {
+function jsPostsSubmitEnable(elementId) {
+
+    if (elementId == "formPostsContent") {
+        var jsPostsContent = document.getElementById("formPostsContent");
+        var jsPostsSubmit = document.getElementById("formPostsSubmit");
+    } else {
+        var jsPostsContent = document.getElementById("formPostsContentEdited" + elementId);
+        var jsPostsSubmit = document.getElementById("formPostsSubmitButton" + elementId);
+    }
+    
+
 	if (jsPostsRegexPatternContent.test(jsPostsContent.value)) {
 		jsPostsSubmit.disabled = false;
 		jsPostsSubmit.classList.remove("btn-danger");
@@ -20,8 +30,13 @@ function jsPostsSubmitEnable() {
 
 
 function jsPostsValidateTextArea(elementId) {
-	jsPostsSubmitEnable();
-	var element =  document.getElementById(elementId);
+    jsPostsSubmitEnable(elementId);
+    
+    if (elementId == "formPostsContent") {
+        var element =  document.getElementById(elementId);
+    }else{
+        var element = document.getElementById("formPostsContentEdited" + elementId);
+    }
 
 
 	if(!jsPostsRegexPatternContent.test(element.value)) {
@@ -30,7 +45,7 @@ function jsPostsValidateTextArea(elementId) {
 			var newElement = document.createElement("div");
 			newElement.setAttribute("id", elementId + "InvalidFeedback");
 			newElement.classList.add("invalid-feedback");
-			var newElementContent = document.createTextNode(jsShowInputFeedback(elementId));
+			var newElementContent = document.createTextNode("Post can not be empty and can not contain '<' and '>' characters.");
 			newElement.appendChild(newElementContent);
 			element.parentNode.insertBefore(newElement, element.nextSibling);
 		}
@@ -79,6 +94,13 @@ function showTextAreaByPostId(elementId) {
         document.getElementById("formPostsEditButton" + elementId).classList.remove("btn-danger");
         document.getElementById("formPostsEditButton" + elementId).classList.add("btn-primary");
 
+        //reset the content of the textarea to the original content from the database
+        document.getElementById("formPostsContentEdited" + elementId).value = originalContent;
+
+        //check the validity of the content
+        jsPostsValidateTextArea(elementId);
+
+        
         //remove the Save button
         document.getElementById("formPostsContentEdited" + elementId).parentElement.parentElement.removeChild(document.getElementById("formPostsSubmitButton" + elementId));
 
