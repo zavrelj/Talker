@@ -58,11 +58,32 @@ function showTextAreaByPostId(elementId) {
         document.getElementById("formPostsEditButton" + elementId).classList.remove("btn-primary");
         document.getElementById("formPostsEditButton" + elementId).classList.add("btn-danger");
 
+        //create the Save button
+        var saveButton = document.createElement("button");
+        saveButton.setAttribute("type", "submit");
+        saveButton.setAttribute("id", "formPostsSubmitButton" + elementId);
+        saveButton.setAttribute("name", "formPostsSubmitButton" + elementId);
+        saveButton.classList.add("btn");
+        saveButton.classList.add("btn-primary");
+        saveButton.classList.add("btn-sm");
+        saveButton.innerText = "Save";
+        document.getElementById("formPostsContentEdited" + elementId).parentNode.parentNode.appendChild(saveButton);
+
+        //hide the original post
+        document.getElementById("databasePostsContent" + elementId).hidden = true;
+
+
     } else {
         document.getElementById("formPostsContentEdited" + elementId).hidden = true;
         document.getElementById("formPostsEditButton" + elementId).text = "Edit";
         document.getElementById("formPostsEditButton" + elementId).classList.remove("btn-danger");
         document.getElementById("formPostsEditButton" + elementId).classList.add("btn-primary");
+
+        //remove the Save button
+        document.getElementById("formPostsContentEdited" + elementId).parentElement.parentElement.removeChild(document.getElementById("formPostsSubmitButton" + elementId));
+
+        //show the original post
+        document.getElementById("databasePostsContent" + elementId).hidden = false;
 
     }
 }

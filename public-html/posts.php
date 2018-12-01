@@ -72,7 +72,6 @@ $db_data = "";
         <input type="hidden" id="formPostsGroupID" name="formPostsGroupID" value="<?php echo $_GET['gid']; ?>">
         <input type="hidden" id="formPostsPostID" name="formPostsPostID" value="<?php echo $dbPostRow["post_id"]; ?>">
         <a href="#formPostsContentEdited<?php echo $dbPostRow['post_id']; ?>" id="formPostsEditButton<?php echo $dbPostRow['post_id']; ?>" class="btn btn-primary btn-sm" role="button" onclick="showTextAreaByPostId('<?php echo $dbPostRow["post_id"]; ?>')">Edit</a>
-        <button type="submit" id="formPostsSubmit" name="formPostsSubmit" class="btn btn-primary btn-sm">Save</button>
 
     </form>
 
