@@ -13,6 +13,9 @@ try {
     //XAMPP
     //$connection = new PDO('mysql:host=localhost;dbname=talker_db', XAMPP[0], XAMPP[1]);
 
+    //000WEBHOST
+    //$connection = new PDO('mysql:host=localhost;dbname=id8122230_talker_db', WEBHOST[0], WEBHOST[1]);
+
     //print "Success! Connected to the database!";
 
 } catch (PDOException $e) {

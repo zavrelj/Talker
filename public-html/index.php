@@ -5,7 +5,7 @@ require('system.ctrl.php');
 
 //if session uid or cookie uid is not empty redirect to gate.php
 if ($_SESSION["uid"]!="" || $_COOKIE["cookieUserEmail"]!="") {
-	header('Location: gate.php');
+	header('Location: gate.php?module=home');
 }
 
 ?>

@@ -251,7 +251,7 @@ function phpSendEmail($to, $subject, $content) {
     // 2 = client and server messages
     $mail->SMTPDebug = 0;
     //Set the hostname of the mail server
-    $mail->Host = 'smtp.gmail.com';
+    $mail->Host = 'in-v3.mailjet.com';
     //Set the SMTP port number
     $mail->Port = 587;
     //Set the encryption system to use tls
@@ -259,7 +259,7 @@ function phpSendEmail($to, $subject, $content) {
     //Whether to use SMTP authentication
     $mail->SMTPAuth = true;
     //Username to use for SMTP authentication - use full email address for gmail
-    $mail->Username = "zavrelj@gmail.com";
+    $mail->Username = "0f51c46b4f02d1efb4027bb722685704";
     //Password to use for SMTP authentication, your Gmail password comes here
     $mail->Password = SMTP_PSWD;
     //Set who the message is to be sent from
@@ -295,7 +295,7 @@ function phpSendVerificationEmail($user_email, $hashed_user_password) {
 	Your account has been created but before you can login you need to activate it with the link below.<br><br>
 
 	Please click this link to activate your account:
-	<a href="http://localhost/verify.php?email='.$user_email.'&hash='.$hashed_user_password.'">Verify your email</a>
+	<a href="http://'.$_SERVER["HTTP_HOST"].'/verify.php?email='.$user_email.'&hash='.$hashed_user_password.'">Verify your email</a>
 
 	';
 
