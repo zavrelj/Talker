@@ -18,32 +18,44 @@ $db_data = "";
 				<div class="invalid-feedback">
 					<?php echo (phpShowInputFeedback($_SESSION["msgid"])[1]); ?>
 				</div>
-        	    <?php } ?>
-            </div>
+        <?php } ?>
+      </div>
 
-            <div class="form-group">
-                <label for="formSettingsBasicsLastName">Last name</label>
-                <input type="text" class="form-control <?php if ($_SESSION['msgid']!='202' && $_SESSION['msgid']!='') { echo 'is-valid'; }else{ echo (phpShowInputFeedback($_SESSION['msgid'])[0]); } ?>" id="formSettingsBasicsLastName" name="formSettingsBasicsLastName" placeholder="Enter your last name" onkeyup="jsSettingsValidateName('formSettingsBasicsLastName')" value="<?php echo $dbUserRow['user_lastname']; ?>">
+      <div class="form-group">
+        <label for="formSettingsBasicsLastName">Last name</label>
+        <input type="text" class="form-control <?php if ($_SESSION['msgid']!='202' && $_SESSION['msgid']!='') { echo 'is-valid'; }else{ echo (phpShowInputFeedback($_SESSION['msgid'])[0]); } ?>" id="formSettingsBasicsLastName" name="formSettingsBasicsLastName" placeholder="Enter your last name" onkeyup="jsSettingsValidateName('formSettingsBasicsLastName')" value="<?php echo $dbUserRow['user_lastname']; ?>">
 
-                <?php if ($_SESSION["msgid"]=="202") { ?>
-                <div class="invalid-feedback">
-                    <?php echo (phpShowInputFeedback($_SESSION["msgid"])[1]); ?>
-                </div>
-                <?php } ?>
-            </div>
+        <?php if ($_SESSION["msgid"]=="202") { ?>
+        <div class="invalid-feedback">
+          <?php echo (phpShowInputFeedback($_SESSION["msgid"])[1]); ?>
+        </div>
+        <?php } ?>
+      </div>
 
-            <div class="form-group">
-                <label for="formSettingsBasicsNickName">Nickname</label>
-                <input type="text" class="form-control <?php if ($_SESSION['msgid']!='203' && $_SESSION['msgid']!='') { echo 'is-valid'; }else{ echo (phpShowInputFeedback($_SESSION['msgid'])[0]); } ?>" id="formSettingsBasicsNickName" name="formSettingsBasicsNickName" placeholder="Enter your nickname" onkeyup="jsSettingsValidateName('formSettingsBasicsNickName')" value="<?php echo $dbUserRow['user_nickname']; ?>">
+      <div class="form-group">
+        <label for="formSettingsBasicsNickName">Nickname</label>
+        <input type="text" class="form-control <?php if ($_SESSION['msgid']!='203' && $_SESSION['msgid']!='') { echo 'is-valid'; }else{ echo (phpShowInputFeedback($_SESSION['msgid'])[0]); } ?>" id="formSettingsBasicsNickName" name="formSettingsBasicsNickName" placeholder="Enter your nickname" onkeyup="jsSettingsValidateName('formSettingsBasicsNickName')" value="<?php echo $dbUserRow['user_nickname']; ?>">
 
-                <?php if ($_SESSION["msgid"]=="203") { ?>
-                <div class="invalid-feedback">
-                    <?php echo (phpShowInputFeedback($_SESSION["msgid"])[1]); ?>
-                </div>
-                <?php } ?>
+        <?php if ($_SESSION["msgid"]=="203") { ?>
+        <div class="invalid-feedback">
+          <?php echo (phpShowInputFeedback($_SESSION["msgid"])[1]); ?>
+        </div>
+        <?php } ?>
 			</div>
+
+      <div class="form-group">
+        <label for="formSettingsBasicsAge">Age</label>
+        <input type="text" class="form-control <?php if ($_SESSION['msgid']!='208' && $_SESSION['msgid']!='') { echo 'is-valid'; }else{ echo (phpShowInputFeedback($_SESSION['msgid'])[0]); } ?>" id="formSettingsBasicsAge" name="formSettingsBasicsAge" placeholder="Enter your age" onkeyup="jsSettingsValidateAge('formSettingsBasicsAge')" value="<?php if ($dbUserRow['user_age']==0) {echo '';}else{echo $dbUserRow['user_age'];} ?>">
+
+        <?php if ($_SESSION["msgid"]=="208") { ?>
+        <div class="invalid-feedback">
+          <?php echo (phpShowInputFeedback($_SESSION["msgid"])[1]); ?>
+        </div>
+        <?php } ?>
+			</div>
+
 			<button type="submit" id="formSettingsBasicsSubmit" name="formSettingsBasicsSubmit" class="btn btn-primary btn-success">Save</button>
-            <button type="submit" id="formSettingsBasicsClear" name="formSettingsBasicsClear" class="btn btn-primary btn-success">Clear</button>
+      <button type="submit" id="formSettingsBasicsClear" name="formSettingsBasicsClear" class="btn btn-primary btn-success">Clear</button>
 		</form>
 	</div>
 </div>

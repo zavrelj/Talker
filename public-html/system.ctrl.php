@@ -137,6 +137,11 @@ function phpShowInputFeedback($feedback_id) {
         $feedback_text="New password must be different from the current password.";
         break;
 
+        case "208":
+		$feedback_type="is-invalid";
+		$feedback_text="Age must be between 20 and 99.";
+        break;
+
         case "301":
         $feedback_type="is-invalid";
         $feedback_text="Choose the email address of the recipient.";

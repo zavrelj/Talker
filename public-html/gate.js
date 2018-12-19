@@ -14,6 +14,10 @@
       var feedbackMessage = "Nickname must be between 3 and 15 characters long and can contain only letters."
       break;
 
+      case "formSettingsBasicsAge":
+      var feedbackMessage = "Age must be between 20 and 99."
+      break;
+
       case "formMessagingRecipient":
       var feedbackMessage = "Choose the email address of the recipient."
       break;

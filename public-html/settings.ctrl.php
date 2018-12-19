@@ -7,20 +7,23 @@
       $user_firstname = $_POST["formSettingsBasicsFirstName"];
       $user_lastname = $_POST["formSettingsBasicsLastName"];
       $user_nickname = $_POST["formSettingsBasicsNickName"];
+      $user_age = $_POST["formSettingsBasicsAge"];
       $user_names_pattern = "~^[a-zA-Z]{3,15}$~";
+      $user_age_pattern = "~^[2-9]{1}[0-9]{1}$~";
 
       $firstname_validation = preg_match($user_names_pattern, $user_firstname);
 	  $lastname_validation = preg_match($user_names_pattern, $user_lastname);
 	  $nickname_validation = preg_match($user_names_pattern, $user_nickname);
+      $age_validation = preg_match($user_age_pattern, $user_age);
 
       //query the database only if at least one name matches the regex pattern
-	  if ($firstname_validation || $lastname_validation || $nickname_validation) {
+	  if ($firstname_validation || $lastname_validation || $nickname_validation || $age_validation) {
         //get the current values from the database and store them so we can potentially save them back if some value is actually empty
         $db_data = array($_SESSION["uid"]);
         $dbUserRow = phpFetchDB('SELECT * FROM users WHERE user_id = ?', $db_data);
         $db_data = "";
 
-        //check each of the three inputs validation, if not valid, assign the db value instead
+        //check each of the four inputs validation, if not valid, assign the db value instead
         if (!$firstname_validation) {
           $user_firstname = $dbUserRow["user_firstname"];
         }
@@ -30,10 +33,14 @@
         if (!$nickname_validation) {
           $user_nickname = $dbUserRow["user_nickname"];
         }
+        if (!$age_validation) {
+            $user_age = $dbUserRow["user_age"];
+        }
+
 
         //update the database row
-        $db_data = array($user_firstname, $user_lastname, $user_nickname, $_SESSION["uid"]);
-        phpModifyDB('UPDATE users SET user_firstname = ?, user_lastname = ?, user_nickname = ? WHERE user_id = ?', $db_data);
+        $db_data = array($user_firstname, $user_lastname, $user_nickname, $user_age, $_SESSION["uid"]);
+        phpModifyDB('UPDATE users SET user_firstname = ?, user_lastname = ?, user_nickname = ?, user_age = ? WHERE user_id = ?', $db_data);
         $db_data = "";
 
         //system feedback - your settings has been updated
@@ -47,14 +54,16 @@
           $_SESSION["msgid"] = "202";
         }else if (!$nickname_validation && $user_nickname!="") {
           $_SESSION["msgid"] = "203";
+        }else if (!$age_validation && $user_age!=0) {
+          $_SESSION["msgid"] = "208";  
         }
       }
     }
 
     if(isset($_POST["formSettingsBasicsClear"])) {
         //update the database row by setting empty strings
-        $db_data = array("", "", "", $_SESSION["uid"]);
-        phpModifyDB('UPDATE users SET user_firstname = ?, user_lastname = ?, user_nickname = ? WHERE user_id = ?', $db_data);
+        $db_data = array("", "", "", 0, $_SESSION["uid"]);
+        phpModifyDB('UPDATE users SET user_firstname = ?, user_lastname = ?, user_nickname = ?, user_age = ? WHERE user_id = ?', $db_data);
         $db_data = "";
     
         //system feedback - your settings has been updated
