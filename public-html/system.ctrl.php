@@ -59,6 +59,11 @@ function phpShowSystemFeedback($feedback_id) {
 		$feedback_type="success";
 		$feedback_text="Post has been deleted!";
         break;
+
+        case "611":
+		$feedback_type="success";
+		$feedback_text="Bookmarks updated!";
+        break;
         
         case "804":
 		$feedback_type="danger";

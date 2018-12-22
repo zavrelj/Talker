@@ -1,12 +1,39 @@
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-lg-10">
     <h5><?php echo phpGetGroupName($_GET["gid"]); ?></h5>
   </div>
-  <div class="col-lg-6">
+  <div class="col-lg-1">
     <?php if (phpGetGroupOwnerID($_GET["gid"]) == $_SESSION["uid"]) { ?>
     <a href="gate.php?module=group&gid=<?php echo $_GET["gid"]; ?>" class="btn btn-primary btn-sm float-right mt-3" role="button">Settings</a>
     <?php } ?>
   </div>
+
+
+<?php
+//check if the group is already bookmarked by the signed-in user
+//if so, don't show the Bookmark button
+
+$db_data = array($_SESSION["uid"], $_GET["gid"]);
+$dbBookmarksList = phpFetchAllDB('SELECT * FROM bookmarks WHERE user_id = ? AND group_id = ?', $db_data);
+$db_data = "";  
+
+if (empty($dbBookmarksList)) {
+
+?>
+
+  
+  <div class="col-lg-1">
+  <form action="bookmarks.ctrl.php" method="post" novalidate>  
+    <input type="hidden" id="formPostsGroupID" name="formPostsGroupID" value="<?php echo $_GET['gid']; ?>">
+    <button type="submit" id="formPostsBookmark" name="formPostsBookmark" class="btn btn-primary btn-sm float-right mt-3">Bookmark</button>
+  </form>
+  </div>
+  
+
+<?php } ?> 
+
+
+
 </div>
 <hr>
 
